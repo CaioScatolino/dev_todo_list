@@ -1,11 +1,11 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "0329b67b-7d3a-42ac-81d7-16c2e15f6a43",
+  "id": "b99ce534-6bab-4682-a6af-28c615eb6a6b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "devs": {
-      "name": "devs",
+    "TB_DEVS": {
+      "name": "TB_DEVS",
       "columns": {
         "id": {
           "name": "id",
@@ -55,8 +55,69 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "devs_id": {
-          "name": "devs_id",
+        "TB_DEVS_id": {
+          "name": "TB_DEVS_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "TB_ATENDIMENTOS": {
+      "name": "TB_ATENDIMENTOS",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "dev_id": {
+          "name": "dev_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "inicio": {
+          "name": "inicio",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fim": {
+          "name": "fim",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": true
+        },
+        "modificado_em": {
+          "name": "modificado_em",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "TB_ATENDIMENTOS_id": {
+          "name": "TB_ATENDIMENTOS_id",
           "columns": [
             "id"
           ]

@@ -7,7 +7,7 @@ import {
   timestamp,
 } from "drizzle-orm/mysql-core";
 
-export const devs = mysqlTable("devs", {
+export const devs = mysqlTable("TB_DEVS", {
   id: int("id").primaryKey().autoincrement(),
   nome: varchar("nome", { length: 100 }).notNull(),
   inicio_turno: time("inicio_turno").notNull(),
@@ -15,3 +15,6 @@ export const devs = mysqlTable("devs", {
   ativo: boolean("ativo").notNull().default(true),
   modificado_em: timestamp("modificado_em").notNull().defaultNow(),
 });
+
+export type Dev = typeof devs.$inferSelect;
+export type NewDev = typeof devs.$inferInsert;
