@@ -15,6 +15,20 @@
       "when": 1776982194094,
       "tag": "0001_wet_vanisher",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1776982298721,
+      "tag": "0002_talented_masked_marvel",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1776983109615,
+      "tag": "0003_funny_hardball",
+      "breakpoints": true
     }
   ]
 }

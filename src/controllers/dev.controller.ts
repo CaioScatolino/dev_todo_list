@@ -16,3 +16,4 @@ export const getAllDevs: RequestHandler = async (req, res) => {
   const devs = await devService.getAllDevs();
   res.status(200).json(devs);
 };
+

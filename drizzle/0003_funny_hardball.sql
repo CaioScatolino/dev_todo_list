@@ -1,0 +1,1 @@
+ALTER TABLE `TB_ATENDIMENTOS` ADD `tempo_total_horas` decimal DEFAULT '0.0' NOT NULL;
