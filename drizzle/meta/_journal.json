@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1776978840926,
+      "tag": "0000_first_captain_midlands",
+      "breakpoints": true
+    }
+  ]
+}
