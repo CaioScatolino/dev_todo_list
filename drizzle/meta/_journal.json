@@ -8,6 +8,13 @@
       "when": 1776979883454,
       "tag": "0000_wild_morlun",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1776982194094,
+      "tag": "0001_wet_vanisher",
+      "breakpoints": true
     }
   ]
 }

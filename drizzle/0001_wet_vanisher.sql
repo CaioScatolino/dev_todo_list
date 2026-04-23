@@ -1,0 +1,2 @@
+ALTER TABLE `TB_ATENDIMENTOS` ADD `tipo` enum('suporte','desenvolvimento') NOT NULL;--> statement-breakpoint
+ALTER TABLE `TB_ATENDIMENTOS` ADD CONSTRAINT `TB_ATENDIMENTOS_dev_id_TB_DEVS_id_fk` FOREIGN KEY (`dev_id`) REFERENCES `TB_DEVS`(`id`) ON DELETE no action ON UPDATE no action;

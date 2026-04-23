@@ -1,7 +1,13 @@
 import { z } from "zod";
 
-export const devValidator = z.object({
+export const createDevSchema = z.object({
     nome: z.string().min(3, "Nome deve ter pelo menos 3 caracteres"),
-    inicio_turno: z.string().refine((time) => /^\d{2}:\d{2}$/.test(time), "Formato de hora inválido"),
-    fim_turno: z.string().refine((time) => /^\d{2}:\d{2}$/.test(time), "Formato de hora inválido"),
+    inicio_turno: z.string().refine((time) => /^\d{2}:\d{2}(:\d{2})?$/.test(time), "Formato de hora inválido"),
+    fim_turno: z.string().refine((time) => /^\d{2}:\d{2}(:\d{2})?$/.test(time), "Formato de hora inválido"),
+});
+
+export const createAtendimentoSchema = z.object({
+    dev_id: z.number(),
+    inicio: z.string().refine((time) => /^\d{2}:\d{2}(:\d{2})?$/.test(time), "Formato de hora inválido"),
+    fim: z.string().refine((time) => /^\d{2}:\d{2}(:\d{2})?$/.test(time), "Formato de hora inválido"),
 });
