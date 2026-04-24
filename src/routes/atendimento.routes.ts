@@ -5,6 +5,6 @@ const router = Router();
 
 router.post("/", atendimentoController.createAtendimento);
 router.get("/", atendimentoController.getAllAtendimentos);
-router.post("/parar", atendimentoController.stopAtendimento);
+router.patch("/stop/:id", atendimentoController.stopAtendimento);
 
 export default router;

@@ -6,6 +6,7 @@ import {
     datetime,
     mysqlEnum,
     decimal,
+    varchar,
 } from "drizzle-orm/mysql-core";
 import { devs } from "./devs";
 import { sql } from "drizzle-orm";
@@ -15,6 +16,7 @@ export const enumTipo = mysqlEnum("tipo", ["suporte", "desenvolvimento"]).notNul
 export const atendimentos = mysqlTable("TB_ATENDIMENTOS", {
     id: int("id").primaryKey().autoincrement(),
     dev_id: int("dev_id").notNull().references(() => devs.id),
+    descricao: varchar("descricao", { length: 255 }).notNull(),
     inicio: datetime("inicio").notNull().default(sql`now()`),
     fim: datetime("fim"),
     tipo: enumTipo,
