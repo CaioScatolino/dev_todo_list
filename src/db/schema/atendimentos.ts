@@ -8,17 +8,18 @@ import {
     decimal,
 } from "drizzle-orm/mysql-core";
 import { devs } from "./devs";
+import { sql } from "drizzle-orm";
 
 export const enumTipo = mysqlEnum("tipo", ["suporte", "desenvolvimento"]).notNull()
 
 export const atendimentos = mysqlTable("TB_ATENDIMENTOS", {
     id: int("id").primaryKey().autoincrement(),
     dev_id: int("dev_id").notNull().references(() => devs.id),
-    inicio: datetime("inicio").notNull(), // Mudado de timestamp para datetime
+    inicio: datetime("inicio").notNull().default(sql`now()`),
     fim: datetime("fim"),
     tipo: enumTipo,
     ativo: boolean("ativo").notNull().default(true),
-    modificado_em: datetime("modificado_em").notNull(), // Mudado de timestamp para datetime
+    modificado_em: datetime("modificado_em").notNull().default(sql`now()`),
     tempo_total_horas: decimal("tempo_total_horas", { precision: 10, scale: 2 }).notNull().default('0.00'),
 });
 
