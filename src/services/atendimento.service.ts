@@ -1,15 +1,14 @@
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { db } from "../db/connection";
 import { atendimentos, NewAtendimento } from "../db/schema";
 
 const agora = new Date();
-const agoraLocal = new Date(agora.getTime() - 3 * 60 * 60 * 1000);
 
 export const createAtendimento = async (atendimento: NewAtendimento) => {
   await db.insert(atendimentos).values({
     ...atendimento,
-    inicio: agoraLocal,
-    modificado_em: agoraLocal,
+    inicio: sql`now()`,
+    modificado_em: sql`now()`,
   });
 };
 
@@ -27,18 +26,15 @@ export const stopAtendimento = async (id: number) => {
     throw new Error("Atendimento não encontrado!");
   }
 
-  const inicioLocal = new Date(result[0].inicio);
-
-  const duracaoMs = agoraLocal.getTime() - inicioLocal.getTime();
-  const duracaoHoras = duracaoMs / (1000 * 60 * 60);
-
   await db
     .update(atendimentos)
     .set({
       ativo: false,
-      fim: agoraLocal,
-      modificado_em: agoraLocal,
-      tempo_total_horas: duracaoHoras.toFixed(2),
+      fim: sql`now()`,
+      modificado_em: sql`now()`,
+      // TIMESTAMPDIFF retorna a diferença em segundos (SECOND)
+      // Dividimos por 3600 para ter o valor em horas
+      tempo_total_horas: sql`ROUND(TIMESTAMPDIFF(SECOND, ${atendimentos.inicio}, now()) / 3600, 2)`,
     })
     .where(eq(atendimentos.id, id));
 };

@@ -17,6 +17,7 @@ export const atendimentos = mysqlTable("TB_ATENDIMENTOS", {
     id: int("id").primaryKey().autoincrement(),
     dev_id: int("dev_id").notNull().references(() => devs.id),
     descricao: varchar("descricao", { length: 255 }).notNull(),
+    solicitante: varchar("solicitante", { length: 255 }).notNull(),
     inicio: datetime("inicio").notNull().default(sql`now()`),
     fim: datetime("fim"),
     tipo: enumTipo,

@@ -34,6 +34,32 @@
                 Nenhum dado carregado ainda...
             </div>
         </section>
+        <section class="card">
+            <h2>2. Criar DEVs (POST)</h2>
+            <p>Preencha os dados abaixo para enviar para a sua API.</p>
+
+            <form id="form-criar-dev">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite o nome...">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Inicio Turno:</label>
+                    <input type="text" id="inicio_turno" name="inicio_turno" required placeholder="Digite o inicio do turno no formato 00:00...">
+                </div>
+                <div class="form-group">
+                    <label for="email">Fim Turno:</label>
+                    <input type="text" id="fim_turno" name="fim_turno" required placeholder="Digite o fim do turno no formato 00:00...">
+                </div>
+
+                <button type="submit" class="btn-success">Criar Dev</button>
+            </form>
+
+            <div id="mensagem-criacao-dev" class="mensagem-box hidden">
+                Nenhum dado carregado ainda...
+            </div>
+        </section>
         </div>
 
         <div id="secao-atendimentos" class="tab-content hidden">
@@ -69,6 +95,11 @@
                         <option value="suporte">Suporte</option>
                         <option value="desenvolvimento">Desenvolvimento</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="solicitante">Solicitante:</label>
+                    <input type="text" id="solicitante" name="solicitante" required placeholder="Digite o solicitante...">
                 </div>
 
                 <div class="form-group">

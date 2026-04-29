@@ -1,0 +1,1 @@
+ALTER TABLE `TB_ATENDIMENTOS` ADD `solicitante` varchar(255) NOT NULL;

@@ -87,6 +87,45 @@ btnBuscarAtendimentos.addEventListener('click', async () => {
 // 2. COMO FAZER UMA REQUISIÇÃO POST (Enviar dados)
 // ==========================================
 
+const inputNomeDev = document.getElementById('nome');
+const inputInicioTurnoDev = document.getElementById('inicio_turno');
+const inputFimTurnoDev = document.getElementById('fim_turno');
+const mensagemCriacaoDev = document.getElementById('mensagem-criacao-dev');
+const formCriacaoDev = document.getElementById('form-criar-dev');
+
+formCriacaoDev.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const nome = inputNomeDev.value;
+    const inicio_turno = inputInicioTurnoDev.value;
+    const fim_turno = inputFimTurnoDev.value;
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/devs`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nome,
+                inicio_turno,
+                fim_turno
+            }),
+        });
+        if (!response.ok) {
+            throw new Error(`Erro na requisição ${response.status}`);
+        }
+        const data = await response.json();
+        mensagemCriacaoDev.textContent = JSON.stringify(data, null, 2);
+        mensagemCriacaoDev.classList.remove('hidden');
+        mensagemCriacaoDev.classList.add('success');
+    } catch (error) {
+        console.error('Erro ao criar dev', error);
+        mensagemCriacaoDev.textContent = `Erro ao criar dev:\n${error.message}\n\nVerifique se o backend está rodando em ${API_BASE_URL}`;
+        mensagemCriacaoDev.classList.remove('hidden');
+        mensagemCriacaoDev.classList.add('error');
+    }
+});
+
 
 // Atribuir  constantes
 const selectDevs = document.getElementById('dev_id');
@@ -180,13 +219,15 @@ formCriarAtendimento.addEventListener('submit', async (event) => {
     const dev_id = document.getElementById('dev_id').value;
     const tipo = document.getElementById('tipo').value;
     const descricao = document.getElementById('descricao').value;
+    const solicitante = document.getElementById('solicitante').value;
 
     // Montamos o objeto/payload que a API está esperando
     // Importante: No seu validator (createAtendimentoSchema), dev_id precisa ser número.
     const payload = {
         dev_id: parseInt(dev_id), // Convertendo string para número
         tipo: tipo,
-        descricao: descricao
+        descricao: descricao,
+        solicitante: solicitante
     };
 
     try {

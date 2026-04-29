@@ -43,6 +43,13 @@
       "when": 1776990796929,
       "tag": "0005_simple_wonder_man",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1777473861182,
+      "tag": "0006_empty_hercules",
+      "breakpoints": true
     }
   ]
 }
