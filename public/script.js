@@ -254,3 +254,27 @@ app.use(cors()); // Isso permite que qualquer front acesse sua API.
 // Quando o HTML terminar de carregar, executa a função carregarDevs
 document.addEventListener('DOMContentLoaded', carregarDevs);
 document.addEventListener('DOMContentLoaded', carregarAtendimentos);
+
+// Lógica de Abas
+document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => {
+                c.classList.remove('active');
+                c.classList.add('hidden');
+            });
+
+            // Add active class to clicked button and corresponding content
+            btn.classList.add('active');
+            const targetId = btn.getAttribute('data-target');
+            const targetContent = document.getElementById(targetId);
+            targetContent.classList.remove('hidden');
+            targetContent.classList.add('active');
+        });
+    });
+});

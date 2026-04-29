@@ -14,7 +14,14 @@
         <h1>Painel de Testes (Frontend ↔ Backend)</h1>
         <p>Este é um frontend simples para você entender na prática como fazer requisições para a sua API.</p>
 
+        <div class="tabs">
+            <button class="tab-btn active" data-target="secao-devs">Devs</button>
+            <button class="tab-btn" data-target="secao-atendimentos">Atendimentos</button>
+        </div>
+
         <hr>
+
+        <div id="secao-devs" class="tab-content active">
 
         <!-- Seção para buscar e listar dados dos DEVs -->
         <section class="card">
@@ -27,6 +34,9 @@
                 Nenhum dado carregado ainda...
             </div>
         </section>
+        </div>
+
+        <div id="secao-atendimentos" class="tab-content hidden">
         <!-- Seção para buscar e listar dados -->
         <section class="card">
             <h2>1. Buscar Atendimentos (GET)</h2>
@@ -87,6 +97,7 @@
 
             <div id="mensagem-finalizacao" class="mensagem-box hidden"></div>
         </section>
+        </div>
     </div>
 
     <!-- Conectando nosso arquivo Javascript onde a mágica do 'Fetch' acontece -->
